@@ -55,7 +55,7 @@ class BillSplit():
         model.who_pays_who = pyo.Var(self.people, self.people, domain=pyo.Binary)
         model.how_much_who_pays_who = pyo.Var(self.people, self.people, domain=pyo.NonNegativeReals)
 
-        # Objective: minimize the number of payments
+        # Objective: minimize the number of transactions
         model.objective = pyo.Objective(
             expr=sum(model.who_pays_who[p1, p2] for p1 in self.people for p2 in self.people if p1 != p2),
             sense=pyo.minimize
